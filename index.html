@@ -1,0 +1,358 @@
+<div class="calculator-container">
+    <h1>حاسبة كميات وتكاليف البناء الشاملة</h1>
+
+    <div class="section-group" id="generalDataSection">
+        <h2>1. بيانات عامة للمبنى:</h2>
+        <button class="toggle-button" onclick="toggleSection('generalDataSection')">استبعاد</button>
+        <div class="section-content">
+            <div class="input-group">
+                <label for="totalBuildingArea">مساحة البناء الإجمالية (متر مربع):</label>
+                <input type="number" id="totalBuildingArea" value="200" step="1">
+            </div>
+            <div class="input-group">
+                <label for="numberOfFloors">عدد الطوابق:</label>
+                <input type="number" id="numberOfFloors" value="1" step="1" min="1">
+            </div>
+        </div>
+    </div>
+
+    <div class="section-group" id="wallsPlasterSection">
+        <h2>2. بيانات الجدران واللياسة:</h2>
+        <button class="toggle-button" onclick="toggleSection('wallsPlasterSection')">استبعاد</button>
+        <div class="section-content">
+            <div class="input-group">
+                <label for="wallLength">طول الجدران الكلي للطابق الواحد (متر):</label>
+                <input type="number" id="wallLength" value="180" step="0.1">
+            </div>
+
+            <div class="input-group">
+                <label for="wallHeight">ارتفاع الجدران للطابق الواحد (متر):</label>
+                <input type="number" id="wallHeight" value="3.2" step="0.1">
+            </div>
+
+            <div class="input-group">
+                <label for="openingArea">مساحة الأبواب والشبابيك للطابق الواحد (متر مربع):</label>
+                <input type="number" id="openingArea" value="16" step="0.1">
+            </div>
+
+            <div class="input-group">
+                <label for="mortarThicknessBuilding">سمك مونة البناء (متر):</label>
+                <input type="number" id="mortarThicknessBuilding" value="0.01" step="0.001">
+            </div>
+
+            <div class="input-group">
+                <label for="mortarThicknessPlaster">سمك مونة اللياسة لكل وجه (متر):</label>
+                <input type="number" id="mortarThicknessPlaster" value="0.025" step="0.001">
+            </div>
+
+            <div class="input-group">
+                <label for="sandRatioBuilding">نسبة الرمل في مونة البناء (الجزء الأكبر):</label>
+                <input type="number" id="sandRatioBuilding" value="4" step="1">
+            </div>
+
+            <div class="input-group">
+                <label for="cementRatioBuilding">نسبة الإسمنت في مونة البناء (الجزء الأصغر):</label>
+                <input type="number" id="cementRatioBuilding" value="1" step="1">
+            </div>
+
+            <div class="input-group">
+                <label for="sandRatioPlaster">نسبة الرمل في مونة اللياسة (الجزء الأكبر):</label>
+                <input type="number" id="sandRatioPlaster" value="3" step="1">
+            </div>
+
+            <div class="input-group">
+                <label for="cementRatioPlaster">نسبة الإسمنت في مونة اللياسة (الجزء الأصغر):</label>
+                <input type="number" id="cementRatioPlaster" value="1" step="1">
+            </div>
+        </div>
+    </div>
+    
+    <div class="section-group" id="paintSection">
+        <h2>3. بيانات الدهانات:</h2>
+        <button class="toggle-button" onclick="toggleSection('paintSection')">استبعاد</button>
+        <div class="section-content">
+            <div class="input-group">
+                <label for="paintCoverage">معدل تغطية الصبغ لكل طبقة (متر مربع/لتر):</label>
+                <input type="number" id="paintCoverage" value="10" step="1">
+            </div>
+
+            <div class="input-group">
+                <label for="paintCoats">عدد طبقات الصبغ:</label>
+                <input type="number" id="paintCoats" value="2" step="1">
+            </div>
+        </div>
+    </div>
+
+    <div class="section-group" id="foundationsSection">
+        <h2>4. بيانات الأساسات:</h2>
+        <button class="toggle-button" onclick="toggleSection('foundationsSection')">استبعاد</button>
+        <div class="section-content">
+            <div class="input-group">
+                <label for="foundationAreaCoverage">نسبة تغطية الأساسات من مساحة البناء الإجمالية (%):</label>
+                <input type="number" id="foundationAreaCoverage" value="70" step="1">
+            </div>
+            <div class="input-group">
+                <label for="foundationDepth">عمق الأساسات (متر):</label>
+                <input type="number" id="foundationDepth" value="0.6" step="0.1">
+            </div>
+            <div class="input-group">
+                <label for="steelConsumptionFoundations">استهلاك حديد التسليح في الأساسات (كجم/متر مكعب خرسانة):</label>
+                <input type="number" id="steelConsumptionFoundations" value="80" step="5">
+            </div>
+        </div>
+    </div>
+
+    <div class="section-group" id="structureMainSection">
+        <h2>5. بيانات الهيكل الخرساني:</h2>
+        <div class="section-content">
+            <div class="input-group">
+                <label for="cementRatioConcrete">نسبة الإسمنت في الخرسانة (جزء):</label>
+                <input type="number" id="cementRatioConcrete" value="1" step="1">
+            </div>
+            <div class="input-group">
+                <label for="sandRatioConcrete">نسبة الرمل في الخرسانة (جزء):</label>
+                <input type="number" id="sandRatioConcrete" value="2" step="1">
+            </div>
+            <div class="input-group">
+                <label for="gravelRatioConcrete">نسبة الحصمة في الخرسانة (جزء):</label>
+                <input type="number" id="gravelRatioConcrete" value="4" step="1">
+            </div>
+
+            <div class="sub-section-group" id="roofSection">
+                <h3>5.1 بيانات الأسقف:</h3>
+                <button class="toggle-button" onclick="toggleSection('roofSection')">استبعاد</button>
+                <div class="section-content">
+                    <div class="input-group">
+                        <label for="roofPercentage">نسبة مساحة السقف من مساحة البناء (%):</label>
+                        <input type="number" id="roofPercentage" value="75" step="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="slabThickness">سمك بلاطة السقف الخرسانية (متر):</label>
+                        <input type="number" id="slabThickness" value="0.20" step="0.01">
+                    </div>
+                    <div class="input-group">
+                        <label for="steelConsumptionSlab">استهلاك حديد التسليح في البلاطة (كجم/متر مكعب خرسانة):</label>
+                        <input type="number" id="steelConsumptionSlab" value="100" step="5">
+                    </div>
+                </div>
+            </div>
+
+            <div class="sub-section-group" id="columnsSection">
+                <h3>5.2 بيانات الأعمدة:</h3>
+                <button class="toggle-button" onclick="toggleSection('columnsSection')">استبعاد</button>
+                <div class="section-content">
+                    <div class="input-group">
+                        <label for="concreteVolColumnsPerM2">حجم خرسانة الأعمدة لكل م2 من مساحة السقف (متر مكعب/م2):</label>
+                        <input type="number" id="concreteVolColumnsPerM2" value="0.03" step="0.001">
+                    </div>
+                    <div class="input-group">
+                        <label for="steelConsumptionColumns">استهلاك حديد التسليح في الأعمدة (كجم/متر مكعب خرسانة):</label>
+                        <input type="number" id="steelConsumptionColumns" value="200" step="10">
+                    </div>
+                </div>
+            </div>
+
+            <div class="sub-section-group" id="beamsSection">
+                <h3>5.3 بيانات الكمرات:</h3>
+                <button class="toggle-button" onclick="toggleSection('beamsSection')">استبعاد</button>
+                <div class="section-content">
+                    <div class="input-group">
+                        <label for="concreteVolBeamsPerM2">حجم خرسانة الكمرات لكل م2 من مساحة السقف (متر مكعب/م2):</label>
+                        <input type="number" id="concreteVolBeamsPerM2" value="0.07" step="0.001">
+                    </div>
+                    <div class="input-group">
+                        <label for="steelConsumptionBeams">استهلاك حديد التسليح في الكمرات (كجم/متر مكعب خرسانة):</label>
+                        <input type="number" id="steelConsumptionBeams" value="120" step="10">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-group" id="pricesWasteSection">
+        <h2>6. أسعار المواد وأجور العمالة ونسبة الهدر:</h2>
+        <button class="toggle-button" onclick="toggleSection('pricesWasteSection')">استبعاد</button>
+        <div class="section-content">
+            <div class="input-group">
+                <label for="priceBlock">سعر البلوك الواحد (بالعملة المحلية):</label>
+                <input type="number" id="priceBlock" value="500" step="1">
+            </div>
+            <div class="input-group">
+                <label for="priceSand">سعر متر الرمل المكعب (بالعملة المحلية):</label>
+                <input type="number" id="priceSand" value="40000" step="1000">
+            </div>
+            <div class="input-group">
+                <label for="priceCementBag">سعر كيس الإسمنت (بالعملة المحلية):</label>
+                <input type="number" id="priceCementBag" value="6000" step="500">
+            </div>
+            <div class="input-group">
+                <label for="priceSteel">سعر كجم الحديد (بالعملة المحلية):</label>
+                <input type="number" id="priceSteel" value="1200" step="100">
+            </div>
+            <div class="input-group">
+                <label for="priceGravel">سعر متر الحصمة المكعب (بالعملة المحلية):</label>
+                <input type="number" id="priceGravel" value="35000" step="1000">
+            </div>
+            <div class="input-group">
+                <label for="pricePaint">سعر لتر الصبغ (بالعملة المحلية):</label>
+                <input type="number" id="pricePaint" value="5000" step="100">
+            </div>
+            
+            <div class="input-group">
+                <label for="laborCostCarpentryM2">أجرة عمل النجارة (شدات) للمتر المربع من السقف (بالعملة المحلية):</label>
+                <input type="number" id="laborCostCarpentryM2" value="10000" step="500">
+            </div>
+            <div class="input-group">
+                <label for="laborCostBlacksmithM2">أجرة عمل الحدادة (تسليح) للمتر المربع من السقف (بالعملة المحلية):</label>
+                <input type="number" id="laborCostBlacksmithM2" value="10000" step="500">
+            </div>
+            <div class="input-group">
+                <label for="laborCostConcreteCastingM2">أجرة عمل صب الخرسانة للمتر المربع من السقف (بالعملة المحلية):</label>
+                <input type="number" id="laborCostConcreteCastingM2" value="5000" step="100">
+            </div>
+            <div class="input-group">
+                <label for="laborCostOtherPerM2">أجرة العمالة الأخرى (بلوك، لياسة، دهانات...الخ) للمتر المربع من البناء (بالعملة المحلية):</label>
+                <input type="number" id="laborCostOtherPerM2" value="10000" step="500">
+            </div>
+
+            <div class="input-group">
+                <label for="wastePercentageBlocks">نسبة الهدر للبلوك (%):</label>
+                <input type="number" id="wastePercentageBlocks" value="5" step="1">
+            </div>
+            <div class="input-group">
+                <label for="wastePercentageMortar">نسبة الهدر للمونة والرمل والحصمة (%):</label>
+                <input type="number" id="wastePercentageMortar" value="10" step="1">
+            </div>
+            <div class="input-group">
+                <label for="wastePercentageSteel">نسبة الهدر لحديد التسليح (%):</label>
+                <input type="number" id="wastePercentageSteel" value="5" step="1">
+            </div>
+            <div class="input-group">
+                <label for="wastePercentagePaint">نسبة الهدر للصبغ (%):</label>
+                <input type="number" id="wastePercentagePaint" value="10" step="1">
+            </div>
+        </div>
+    </div>
+
+    <div class="section-group" id="finishingSection">
+        <h2>7. بيانات التشطيبات الأساسية:</h2>
+        <button class="toggle-button" onclick="toggleSection('finishingSection')">استبعاد</button>
+        <div class="section-content">
+            <div class="input-group">
+                <label for="costPerM2Flooring">تكلفة المتر المربع للأرضيات والسيراميك (بالعملة المحلية):</label>
+                <input type="number" id="costPerM2Flooring" value="5000" step="100">
+            </div>
+            <div class="input-group">
+                <label for="numberOfDoors">عدد الأبواب (لكل طابق):</label>
+                <input type="number" id="numberOfDoors" value="8" step="1">
+            </div>
+            <div class="input-group">
+                <label for="pricePerDoor">متوسط سعر الباب الواحد (بالعملة المحلية):</label>
+                <input type="number" id="pricePerDoor" value="15000" step="500">
+            </div>
+            <div class="input-group">
+                <label for="numberOfWindows">عدد الشبابيك (لكل طابق):</label>
+                <input type="number" id="numberOfWindows" value="12" step="1">
+            </div>
+            <div class="input-group">
+                <label for="pricePerWindow">متوسط سعر الشباك الواحد (بالعملة المحلية):</label>
+                <input type="number" id="pricePerWindow" value="10000" step="500">
+            </div>
+            <div class="input-group">
+                <label for="costPerM2Electrical">تكلفة التمديدات الكهربائية للمتر المربع (بالعملة المحلية):</label>
+                <input type="number" id="costPerM2Electrical" value="8000" step="100">
+            </div>
+            <div class="input-group">
+                <label for="costPerM2Plumbing">تكلفة التمديدات الصحية للمتر المربع (بالعملة المحلية):</label>
+                <input type="number" id="costPerM2Plumbing" value="6000" step="100">
+            </div>
+            <div class="input-group">
+                <label for="costPerM2Carpentry">تكلفة النجارة الديكورية/التشطيبية للمتر المربع (بالعملة المحلية):</label>
+                <input type="number" id="costPerM2Carpentry" value="4000" step="100">
+            </div>
+            <div class="input-group">
+                <label for="costPerM2Blacksmith">تكلفة الحدادة الديكورية/التشطيبية للمتر المربع (بالعملة المحلية):</label>
+                <input type="number" id="costPerM2Blacksmith" value="3000" step="100">
+            </div>
+        </div>
+    </div>
+
+    <button onclick="calculateMaterials()">احسب الكميات والتكاليف</button>
+
+    <div class="results-section">
+        <h2>النتائج الإجمالية للمبنى بالكامل:</h2>
+
+        <h3>1. تقديرات الأساسات (شاملة الهدر):</h3>
+        <p>حجم خرسانة الأساسات: <span id="resultFoundationsConcreteVolume">0.00</span> متر مكعب</p>
+        <p>كمية رمل الأساسات: <span id="resultFoundationsSand">0.00</span> متر مكعب</p>
+        <p>كمية حصمة الأساسات: <span id="resultFoundationsGravel">0.00</span> متر مكعب</p>
+        <p>كمية إسمنت الأساسات: <span id="resultFoundationsCementBags">0</span> كيس</p>
+        <p>كمية حديد التسليح للأساسات: <span id="resultFoundationsSteel">0.00</span> كجم</p>
+        <p class="cost detailed-cost">تكلفة رمل الأساسات: <span id="costFoundationsSand">0.00</span></p>
+        <p class="cost detailed-cost">تكلفة حصمة الأساسات: <span id="costFoundationsGravel">0.00</span></p>
+        <p class="cost detailed-cost">تكلفة إسمنت الأساسات: <span id="costFoundationsCement">0.00</span></p>
+        <p class="cost detailed-cost">تكلفة حديد الأساسات: <span id="costFoundationsSteel">0.00</span></p>
+        <p class="cost">التكلفة الإجمالية للأساسات: <span id="costFoundationsTotal">0.00</span></p>
+
+        <h3>2. تقديرات الجدران والبناء (شاملة الهدر):</h3>
+        <p>عدد البلوكات اللازمة: <span id="resultBlocks">0</span> بلوك</p>
+        <p>كمية رمل مونة البناء: <span id="resultBuildingSand">0.00</span> متر مكعب</p>
+        <p>كمية إسمنت مونة البناء: <span id="resultBuildingCementBags">0</span> كيس</p>
+        <p class="cost detailed-cost">تكلفة البلوكات: <span id="costBlocks">0.00</span></p>
+        <p class="cost detailed-cost">تكلفة رمل مونة البناء: <span id="costBuildingSand">0.00</span></p>
+        <p class="cost detailed-cost">تكلفة إسمنت مونة البناء: <span id="costBuildingCement">0.00</span></p>
+        <p class="cost">التكلفة الإجمالية للجدران ومونة البناء: <span id="costBlocksAndBuildingMortarTotal">0.00</span></p>
+
+        <h3>3. تقديرات اللياسة (اللبخ) (شاملة الهدر):</h3>
+        <p>كمية رمل مونة اللياسة: <span id="resultPlasterSand">0.00</span> متر مكعب</p>
+        <p>كمية إسمنت مونة اللياسة: <span id="resultPlasterCementBags">0</span> كيس</p>
+        <p class="cost detailed-cost">تكلفة رمل مونة اللياسة: <span id="costPlasterSand">0.00</span></p>
+        <p class="cost detailed-cost">تكلفة إسمنت مونة اللياسة: <span id="costPlasterCement">0.00</span></p>
+        <p class="cost">التكلفة الإجمالية للياسة: <span id="costPlasterMortarTotal">0.00</span></p>
+
+        <h3>4. تقديرات الهيكل الخرساني:</h3>
+        <p>مساحة السقف الكلية للمبنى: <span id="resultTotalRoofArea">0.00</span> متر مربع</p>
+        <p>حجم خرسانة الهيكل (أسقف، أعمدة، كمرات): <span id="resultStructureConcreteVolume">0.00</span> متر مكعب</p>
+        <p>كمية رمل خرسانة الهيكل: <span id="resultStructureSand">0.00</span> متر مكعب</p>
+        <p>كمية حصمة خرسانة الهيكل: <span id="resultStructureGravel">0.00</span> متر مكعب</p>
+        <p>كمية إسمنت خرسانة الهيكل: <span id="resultStructureCementBags">0</span> كيس</p>
+        <p>كمية حديد التسليح للهيكل: <span id="resultStructureSteel">0.00</span> كجم</p>
+        <p class="cost detailed-cost">تكلفة رمل خرسانة الهيكل: <span id="costStructureSand">0.00</span></p>
+        <p class="cost detailed-cost">تكلفة حصمة خرسانة الهيكل: <span id="costStructureGravel">0.00</span></p>
+        <p class="cost detailed-cost">تكلفة إسمنت خرسانة الهيكل: <span id="costStructureCement">0.00</span></p>
+        <p class="cost detailed-cost">تكلفة حديد التسليح للهيكل: <span id="costStructureSteel">0.00</span></p>
+        <p class="cost">التكلفة الإجمالية للهيكل الخرساني: <span id="costStructureConcreteAndSteelTotal">0.00</span></p>
+
+        <h3>5. تقديرات الدهانات (شاملة الهدر):</h3>
+        <p>كمية الصبغ اللازمة: <span id="resultPaint">0.00</span> لتر</p>
+        <p class="cost detailed-cost">تكلفة الصبغ: <span id="costPaintMaterial">0.00</span></p>
+        <p class="cost">التكلفة الإجمالية للدهانات: <span id="costPaintTotal">0.00</span></p>
+
+        <h3>6. أجور العمالة المباشرة:</h3>
+        <p class="cost detailed-cost">أجرة نجارة (شدات) الهيكل الخرساني: <span id="costLaborCarpentry">0.00</span></p>
+        <p class="cost detailed-cost">أجرة حدادة (تسليح) الهيكل الخرساني: <span id="costLaborBlacksmith">0.00</span></p>
+        <p class="cost detailed-cost">أجرة صب الخرسانة: <span id="costLaborConcreteCasting">0.00</span></p>
+        <p class="cost detailed-cost">أجرة العمالة الأخرى (بلوك، لياسة، دهانات...الخ): <span id="costLaborOther">0.00</span></p>
+        <p class="cost">التكلفة الإجمالية لأجور العمالة المباشرة: <span id="totalDirectLaborCost">0.00</span></p>
+
+        <h3>7. تقديرات التشطيبات الأساسية:</h3>
+        <p>تكلفة الأرضيات والسيراميك: <span id="costFlooringTotal">0.00</span></p>
+        <p>تكلفة الأبواب: <span id="costDoorsTotal">0.00</span></p>
+        <p>تكلفة الشبابيك: <span id="costWindowsTotal">0.00</span></p>
+        <p>تكلفة التمديدات الكهربائية: <span id="costElectricalTotal">0.00</span></p>
+        <p>تكلفة التمديدات الصحية: <span id="costPlumbingTotal">0.00</span></p>
+        <p>تكلفة النجارة الديكورية: <span id="costCarpentryTotal">0.00</span></p>
+        <p>تكلفة الحدادة الديكورية: <span id="costBlacksmithTotal">0.00</span></p>
+        <p class="cost">التكلفة الإجمالية للتشطيبات الأساسية: <span id="costFinishingTotal">0.00</span></p>
+
+
+        <h3>الإجمالي الكلي للمواد والعمالة للمبنى:</h3>
+        <p>إجمالي الرمل الكلي: <span id="resultOverallTotalSand">0.00</span> متر مكعب</p>
+        <p>إجمالي الإسمنت الكلي: <span id="resultOverallTotalCementBags">0</span> كيس</p>
+        <p>إجمالي الحصمة الكلية: <span id="resultOverallTotalGravel">0.00</span> متر مكعب</p>
+        <p>إجمالي حديد التسليح الكلي: <span id="resultOverallTotalSteel">0.00</span> كجم</p>
+        <p class="cost">إجمالي تكلفة المواد: <span id="totalMaterialCost">0.00</span></p>
+        <p class="cost">إجمالي تكلفة العمالة: <span id="estimatedLaborCost">0.00</span></p>
+        <p class="cost final-cost">التكلفة الإجمالية التقديرية للمشروع: <span id="overallTotalCost">0.00</span></p>
+    </div>
+</div>

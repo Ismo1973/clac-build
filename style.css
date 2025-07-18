@@ -1,0 +1,235 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 body \{\
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\
+    background-color: #f4f7f6;\
+    color: #333;\
+    line-height: 1.6;\
+    margin: 0;\
+    padding: 20px;\
+    direction: rtl; /* Right-to-left for Arabic */\
+    text-align: right; /* Align text to the right for Arabic */\
+\}\
+\
+.calculator-container \{\
+    max-width: 900px;\
+    margin: 30px auto;\
+    background: #fff;\
+    padding: 30px;\
+    border-radius: 12px;\
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);\
+\}\
+\
+h1 \{\
+    text-align: center;\
+    color: #0056b3;\
+    margin-bottom: 30px;\
+    font-size: 2.2em;\
+    border-bottom: 2px solid #e0e0e0;\
+    padding-bottom: 15px;\
+\}\
+\
+h2 \{\
+    color: #0056b3;\
+    margin-top: 30px;\
+    margin-bottom: 15px;\
+    font-size: 1.6em;\
+    border-bottom: 1px dashed #e0e0e0;\
+    padding-bottom: 8px;\
+    display: flex;\
+    justify-content: space-between;\
+    align-items: center;\
+\}\
+\
+h3 \{\
+    color: #007bff;\
+    margin-top: 20px;\
+    margin-bottom: 10px;\
+    font-size: 1.3em;\
+    border-bottom: 1px solid #f0f0f0;\
+    padding-bottom: 5px;\
+\}\
+\
+.section-group \{\
+    background-color: #f9f9f9;\
+    border: 1px solid #e0e0e0;\
+    border-radius: 8px;\
+    padding: 20px;\
+    margin-bottom: 25px;\
+    transition: all 0.3s ease;\
+\}\
+\
+.section-group.excluded \{\
+    background-color: #f0f0f0;\
+    opacity: 0.7;\
+    border-color: #ccc;\
+\}\
+\
+.section-group.excluded .section-content \{\
+    display: none;\
+\}\
+\
+.toggle-button \{\
+    background-color: #dc3545;\
+    color: white;\
+    border: none;\
+    padding: 8px 15px;\
+    border-radius: 5px;\
+    cursor: pointer;\
+    font-size: 0.9em;\
+    transition: background-color 0.3s ease;\
+\}\
+\
+.toggle-button:hover \{\
+    background-color: #c82333;\
+\}\
+\
+.toggle-button.included \{\
+    background-color: #28a745;\
+\}\
+\
+.toggle-button.included:hover \{\
+    background-color: #218838;\
+\}\
+\
+.input-group \{\
+    margin-bottom: 15px;\
+    display: flex;\
+    flex-direction: column;\
+    align-items: flex-end; /* Align labels to the right */\
+\}\
+\
+.input-group label \{\
+    display: block;\
+    margin-bottom: 8px;\
+    font-weight: bold;\
+    color: #555;\
+\}\
+\
+.input-group input[type="number"] \{\
+    width: 100%;\
+    padding: 10px 12px;\
+    border: 1px solid #ccc;\
+    border-radius: 6px;\
+    box-sizing: border-box; /* Include padding in width */\
+    font-size: 1em;\
+    direction: ltr; /* Ensure numbers are LTR */\
+    text-align: left; /* Align input numbers to the left */\
+\}\
+\
+button \{\
+    display: block;\
+    width: 100%;\
+    padding: 15px;\
+    background-color: #007bff;\
+    color: white;\
+    border: none;\
+    border-radius: 8px;\
+    font-size: 1.2em;\
+    cursor: pointer;\
+    margin-top: 30px;\
+    transition: background-color 0.3s ease, transform 0.2s ease;\
+\}\
+\
+button:hover \{\
+    background-color: #0056b3;\
+    transform: translateY(-2px);\
+\}\
+\
+.results-section \{\
+    background-color: #e9f5ff;\
+    border: 1px solid #cce5ff;\
+    border-radius: 10px;\
+    padding: 25px;\
+    margin-top: 40px;\
+    box-shadow: inset 0 0 10px rgba(0, 123, 255, 0.1);\
+\}\
+\
+.results-section p \{\
+    font-size: 1.1em;\
+    margin-bottom: 10px;\
+    color: #343a40;\
+    display: flex;\
+    justify-content: space-between;\
+    padding-right: 10px; /* Space for the value */\
+\}\
+\
+.results-section span \{\
+    font-weight: bold;\
+    color: #0056b3;\
+    flex-shrink: 0; /* Prevent span from shrinking */\
+    text-align: left; /* Ensure numbers are left-aligned */\
+    direction: ltr; /* Ensure numbers are LTR */\
+\}\
+\
+.cost \{\
+    font-weight: bold;\
+    color: #28a745;\
+\}\
+\
+.detailed-cost \{\
+    font-size: 1em; /* Slightly smaller for detailed costs */\
+    color: #6c757d;\
+    padding-right: 20px; /* Indent detailed costs */\
+\}\
+\
+.final-cost \{\
+    font-size: 1.4em;\
+    color: #dc3545;\
+    margin-top: 20px;\
+    padding-top: 10px;\
+    border-top: 2px solid #cce5ff;\
+\}\
+\
+.sub-section-group \{\
+    background-color: #f0f8ff;\
+    border: 1px solid #b3d9ff;\
+    border-radius: 6px;\
+    padding: 15px;\
+    margin-top: 15px;\
+    margin-bottom: 15px;\
+\}\
+\
+.sub-section-group h3 \{\
+    margin-top: 0;\
+    padding-bottom: 5px;\
+    border-bottom: 1px solid #cce5ff;\
+    display: flex;\
+    justify-content: space-between;\
+    align-items: center;\
+\}\
+\
+/* Responsive adjustments */\
+@media (max-width: 768px) \{\
+    .calculator-container \{\
+        margin: 15px;\
+        padding: 20px;\
+    \}\
+\
+    h1 \{\
+        font-size: 1.8em;\
+    \}\
+\
+    h2 \{\
+        font-size: 1.4em;\
+    \}\
+\
+    .input-group label, .results-section p \{\
+        font-size: 0.95em;\
+    \}\
+\
+    .input-group input[type="number"] \{\
+        padding: 8px;\
+    \}\
+\
+    button \{\
+        padding: 12px;\
+        font-size: 1.1em;\
+    \}\
+\}\
+}
